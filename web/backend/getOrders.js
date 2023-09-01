@@ -1,7 +1,7 @@
 import { GraphqlQueryError } from "@shopify/shopify-api";
-import shopify from "./shopify.js";
+import shopify from "../shopify.js";
 
-export default async function getOrderList(session) {
+export default async function getOrders(session) {
   const client = new shopify.api.clients.Graphql({ session });
 
   try {
@@ -19,12 +19,6 @@ export default async function getOrderList(session) {
                       firstName
                       lastName
                       tags
-                    }
-                    totalPriceSet {
-                      presentmentMoney {
-                        amount
-                        currencyCode
-                      }
                     }
                     fullyPaid
                     billingAddress {

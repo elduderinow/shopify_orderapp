@@ -6,6 +6,7 @@ import {
   AppBridgeProvider,
   QueryProvider,
   PolarisProvider,
+  DiscountProvider,
 } from "./components";
 
 export default function App() {
@@ -16,21 +17,27 @@ export default function App() {
 
   return (
     <PolarisProvider>
-      <BrowserRouter>
-        <AppBridgeProvider>
-          <QueryProvider>
-            <NavigationMenu
-              navigationLinks={[
-                {
-                  label: "Page name",
-                  destination: "/pagename",
-                },
-              ]}
-            />
-            <Routes pages={pages} />
-          </QueryProvider>
-        </AppBridgeProvider>
-      </BrowserRouter>
+        <BrowserRouter>
+          <AppBridgeProvider>
+          <DiscountProvider>
+            <QueryProvider>
+              <NavigationMenu
+                navigationLinks={[
+                  {
+                    label: "Discounts",
+                    destination: "/discountpage",
+                  },
+                  {
+                    label: "Order to Invoice",
+                    destination: "/pagename",
+                  },
+                ]}
+              />
+              <Routes pages={pages} />
+            </QueryProvider>
+            </DiscountProvider>
+          </AppBridgeProvider>
+        </BrowserRouter>
     </PolarisProvider>
   );
 }
